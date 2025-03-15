@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "gaurav_terraform_testing_bucket"
+  bucket = "gaurav-terraform-testing-bucket"
 
   tags = {
     Name        = "My bucket"
