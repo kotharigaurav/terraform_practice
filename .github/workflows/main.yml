@@ -48,7 +48,8 @@ jobs:
         run: aws sts get-caller-identity
 
       - name: Terraform-Plan
-        working-directory: ${{ inputs.directory_path }}
+        # working-directory: ${{ inputs.directory_path }}
+        working-directory: "resource"
         run: |
           # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
           terraform init
