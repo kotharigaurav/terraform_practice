@@ -7,6 +7,7 @@ on:
         description: 'Select the environment'
         required: true
         default: 'int'
+        type: choice
         options:
           - int
           - prod
@@ -50,5 +51,5 @@ jobs:
         working-directory: ${{ inputs.directory_path }}
         run: |
           # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
-          terraoform init
+          terraform init
           terraform plan
