@@ -54,3 +54,39 @@ jobs:
           # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
           terraform init
           terraform plan
+
+  terraform-apply:
+    name: Terraform Plan
+    environment: 
+      name: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.0
+
+      - name: Setup up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.4"
+
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: "us-east-1"
+          role-to-assume: "arn:aws:iam::509399638194:role/github-oidc-role"
+          role-session-name: Terraform-Deployment
+
+      # - name: Copy private key to download remote repo files
+      #   run: |
+      #     mkdir -p
+
+      - name: Check role
+        run: aws sts get-caller-identity
+
+      - name: Terraform-Plan
+        # working-directory: ${{ inputs.directory_path }}
+        working-directory: "resource"
+        run: |
+          # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
+          terraform init
+          terraform apply --auto-approve
