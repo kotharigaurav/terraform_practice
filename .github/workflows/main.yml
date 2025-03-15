@@ -85,7 +85,7 @@ jobs:
       - name: Check role
         run: aws sts get-caller-identity
 
-      - name: Terraform-Plan
+      - name: Terraform-Apply
         # working-directory: ${{ inputs.directory_path }}
         working-directory: "resource"
         run: |
