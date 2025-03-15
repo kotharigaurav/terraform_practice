@@ -10,11 +10,11 @@ terraform {
   }
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "gaurav-terraform-testing-bucket"
+# resource "aws_s3_bucket" "example" {
+#   bucket = "gaurav-terraform-testing-bucket"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
-}
+#   tags = {
+#     Name        = "My bucket"
+#     Environment = "Dev"
+#   }
+# }
