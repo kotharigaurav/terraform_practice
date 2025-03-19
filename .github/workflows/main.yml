@@ -49,9 +49,8 @@ jobs:
 
       - name: Terraform-Plan
         # working-directory: ${{ inputs.directory_path }}
-        working-directory: "resource"
+        working-directory: "resource/iam"
         run: |
-          # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
           terraform init
           terraform plan
 
@@ -87,9 +86,8 @@ jobs:
 
       - name: Terraform-Apply
         # working-directory: ${{ inputs.directory_path }}
-        working-directory: "resource"
+        working-directory: "resource/iam"
         run: |
-          # terraform init -backend-config="role_arn=${{ secrets.S3_BACKEND_ROLE_ARN }}"
           terraform init
           terraform apply --auto-approve
           # terraform destroy -auto-approve
