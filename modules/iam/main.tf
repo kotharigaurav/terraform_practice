@@ -1,5 +1,6 @@
 resource "aws_iam_role" "this" {
-  name = var.role_name
+#   name = var.role_name
+    name = "iam-role-first"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -17,17 +18,18 @@ resource "aws_iam_role" "this" {
     ]
   })
 
-#   managed_policy_arns = aws_iam_policy.policy_one.arn
+  #   managed_policy_arns = aws_iam_policy.policy_one.arn
 }
 
 resource "aws_iam_policy" "policy_one" {
-  name = var.policy_name
+#   name = var.policy_name
+    name = "first-policy"
 
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Action   = ["ec2:Describe*","s3:*"]
+        Action   = ["ec2:Describe*", "s3:*"]
         Effect   = "Allow"
         Resource = "*"
       },
