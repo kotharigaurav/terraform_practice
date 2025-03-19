@@ -17,10 +17,9 @@ resource "aws_iam_role" "this" {
     ]
   })
 
-  #   managed_policy_arns = aws_iam_policy.policy_one.arn
 }
 
-resource "aws_iam_policy" "policy_one" {
+resource "aws_iam_policy" "policy" {
   name = var.policy_name
 
   policy = jsonencode({
@@ -33,4 +32,9 @@ resource "aws_iam_policy" "policy_one" {
       },
     ]
   })
+}
+
+resource "aws_iam_role_policy_attachment" "test-attach" {
+  role       = aws_iam_role.this.name
+  policy_arn = aws_iam_policy.policy.arn
 }
