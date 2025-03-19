@@ -1,4 +1,4 @@
 locals {
-  iam_role_name = "terrform_iam_role"
-  iam_policy_name = "terraform_iam_policy"
+  iam_role_name = "terrform-iam-role"
+  iam_policy_name = "terraform-iam-policy"
 }
